@@ -26,9 +26,6 @@ jobs:
       - name: Supabase version
         run: supabase --version
 
-      - name: Link to Supabase project
-        run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
-
-      - name: Push migrations
-        run: supabase db push --linked --log-format pretty
+      - name: Push migrations (direct)
+        run: supabase db push --project-ref "$SUPABASE_PROJECT_REF" --log-format pretty
 

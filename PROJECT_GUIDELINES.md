@@ -24,7 +24,7 @@ Status legend: [x] done, [~] in progress, [ ] pending, [⏩] optional/phase late
 - [x] Supabase migrations for schema (products, variants, inventory, carts, orders, discounts, content) — initial migration added
 - [ ] Enable RLS on all tables
 - [ ] Implement RLS policies for public/product read and account/order ownership
-- [ ] Seed script in `scripts/seed.ts`
+- [ ] Seed data: run `scripts/seed.sql` in Supabase Studio SQL Editor
 - [ ] Supabase Storage buckets and policies
 - [ ] Auth flow: email/password + OAuth
 - [ ] Profiles bootstrap on sign-in; default role `customer`

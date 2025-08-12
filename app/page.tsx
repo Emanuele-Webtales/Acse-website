@@ -1,10 +1,28 @@
-export default function Home() {
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+
+export default async function Page() {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("id, title, slug, status")
+    .eq("status", "active")
+    .limit(10);
+
+  if (error) {
+    return <pre>Supabase error: {error.message}</pre>;
+  }
+
+  if (!products || products.length === 0) {
+    return <p>No active products yet. Seed one in Supabase Studio.</p>;
+  }
+
   return (
-    <main className="min-h-[80svh] grid place-items-center p-8">
-      <div className="text-center max-w-3xl">
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">Acsé</h1>
-        <p className="mt-4 text-[--color-muted] text-lg">Award‑grade ecommerce starter is ready. Check PROJECT_GUIDELINES.md to proceed.</p>
-      </div>
-    </main>
+    <ul>
+      {products.map((p) => (
+        <li key={p.id}>{p.title}</li>
+      ))}
+    </ul>
   );
 }
