@@ -2,6 +2,81 @@
 
 This document is the single source of truth for building, operating, and evolving the Acsé ecommerce platform. It is designed for a senior engineering team to execute flawlessly.
 
+## 0. Progress Log and To‑Do Checklist
+
+Status legend: [x] done, [~] in progress, [ ] pending, [⏩] optional/phase later
+
+### Phase 0 — Setup
+- [x] Initialize Next.js (App Router, TS) with Tailwind and pnpm
+- [x] Fix project name and lockfile issues
+- [x] Install core deps: Next, React, Tailwind
+- [x] Install platform deps: GSAP, Supabase, Stripe, zod
+- [x] Install testing stack: Vitest, Testing Library, Playwright (+ browsers)
+- [x] Configure `tsconfig.json` (strict), `.gitignore`, helpful npm scripts
+- [x] Add base design tokens in `app/globals.css`
+- [x] Update `app/layout.tsx` metadata; simplify `app/page.tsx`
+- [x] Scaffold architecture directories under `components/*`, `lib/*`, `types`, `scripts`
+- [x] Implement initial helpers: `lib/gsap/*`, `lib/supabase/*`, `lib/stripe/*`, `lib/seo/*`
+- [x] Write `PROJECT_GUIDELINES.md`
+- [x] Typecheck green; dev server runs
+
+### Phase 1 — Data and Auth
+- [x] Supabase migrations for schema (products, variants, inventory, carts, orders, discounts, content) — initial migration added
+- [ ] Enable RLS on all tables
+- [ ] Implement RLS policies for public/product read and account/order ownership
+- [ ] Seed script in `scripts/seed.ts`
+- [ ] Supabase Storage buckets and policies
+- [ ] Auth flow: email/password + OAuth
+- [ ] Profiles bootstrap on sign-in; default role `customer`
+- [ ] Guest cart merge on login
+
+### Phase 2 — Storefront foundation
+- [ ] Global layouts, header/footer, nav
+- [ ] SEO metadata utilities per route; sitemap/robots
+- [ ] Homepage: hero with GSAP, featured collections, content blocks
+- [ ] PLP: server-rendered filters, pagination/infinite scroll
+- [ ] PDP: gallery with GSAP Flip, variant selection, pricing
+- [ ] Content blocks read from `content_blocks`
+
+### Phase 3 — Cart and Checkout
+- [ ] Cart model (guest + user), server actions, optimistic UI
+- [ ] Stripe Checkout session API route
+- [ ] Success/cancel pages
+- [ ] Webhook route: create orders, decrement inventory, idempotent
+- [ ] Discounts validation and application
+
+### Phase 4 — Account
+- [ ] Orders list/detail with downloads
+- [ ] Address management
+- [ ] Payment methods (optional via Setup Intents)
+- [ ] Profile updates
+
+### Phase 5 — Admin CMS
+- [ ] Admin layout + RBAC guard
+- [ ] Products CRUD (images upload, variants, pricing)
+- [ ] Inventory adjustments and low-stock alerts
+- [ ] Orders management (status updates, refunds)
+- [ ] Discounts management
+- [ ] Content blocks editor with preview
+- [ ] Audit logs and cache revalidation
+
+### Phase 6 — Polish and Awards pass
+- [ ] Motion polish across hero/PLP/PDP/cart
+- [ ] Performance tuning (bundle, fonts, image budgets)
+- [ ] Accessibility audit and fixes
+- [ ] Cross-device QA
+
+### Phase 7 — Testing, Docs, Launch
+- [ ] Unit/integration coverage for critical modules
+- [ ] E2E coverage for storefront, checkout, admin
+- [ ] Visual baselines and a11y checks in CI
+- [ ] Observability & error boundaries
+- [ ] Final CI gates and production deploy
+
+### Ongoing
+- [ ] Documentation updates alongside features
+- [ ] Performance and accessibility regression checks on PRs
+
 ## 1. Tech Stack and Principles
 - Next.js App Router (RSC-first), TypeScript strict.
 - Tailwind CSS v4 with CSS variables design tokens.

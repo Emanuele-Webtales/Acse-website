@@ -2,6 +2,7 @@ import Stripe from "stripe";
 
 export function getStripeServer() {
   const key = process.env.STRIPE_SECRET_KEY!;
-  return new Stripe(key, { apiVersion: "2024-12-18.acacia" as any });
+  // Use library default pinned version to avoid type mismatch during scaffold; adjust later if needed.
+  return new Stripe(key);
 }
 

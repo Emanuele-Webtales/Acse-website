@@ -7,8 +7,9 @@ export function useGsapScope() {
 
   useEffect(() => {
     return () => {
-      gsap.killTweensOf(scopeRef.current || undefined);
-      gsap.globalTimeline.clear();
+      if (scopeRef.current) {
+        gsap.killTweensOf(scopeRef.current);
+      }
     };
   }, []);
 

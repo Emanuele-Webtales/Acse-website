@@ -1,0 +1,6 @@
+# Supabase CLI config
+project_id = "${SUPABASE_PROJECT_REF}"
+studio_port = 54323
+api_port = 54321
+db_port = 54322
+
