@@ -22,11 +22,10 @@ Status legend: [x] done, [~] in progress, [ ] pending, [⏩] optional/phase late
 
 ### Phase 1 — Data and Auth
 - [x] Supabase migrations for schema (products, variants, inventory, carts, orders, discounts, content) — initial migration added
-- [ ] Enable RLS on all tables
-- [ ] Implement RLS policies for public/product read and account/order ownership
+- [x] Enable RLS on all tables (initial) and add public/owner policies migration
 - [ ] Seed data: run `scripts/seed.sql` in Supabase Studio SQL Editor
 - [ ] Supabase Storage buckets and policies
-- [ ] Auth flow: email/password + OAuth
+- [~] Auth flow: email/password + OAuth (Sign in/out routes added; provider setup pending)
 - [ ] Profiles bootstrap on sign-in; default role `customer`
 - [ ] Guest cart merge on login
 
