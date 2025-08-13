@@ -1,4 +1,4 @@
--- Initial schema for Acsé ecommerce
+-- Initial schema for Acsé ecommerce (renamed to match Supabase pattern)
 create extension if not exists pg_trgm;
 create extension if not exists pgcrypto;
 

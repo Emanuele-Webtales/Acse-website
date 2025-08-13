@@ -1,4 +1,4 @@
--- Profiles RLS policies: self read/update/insert
+-- Profiles RLS policies: self read/update/insert (renamed)
 
 alter table public.profiles enable row level security;
 

@@ -1,5 +1,4 @@
--- RLS and policies for public storefront reads and ownership
-
+-- RLS and policies for public storefront reads and ownership (renamed)
 -- Products: public can read only active products
 do $$ begin
   if not exists (
