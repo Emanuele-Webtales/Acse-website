@@ -2,7 +2,7 @@
 -- Products: public can read only active products
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'public' and tablename = 'products' and polname = 'products_public_select'
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'products' and policyname = 'products_public_select'
   ) then
     create policy products_public_select on public.products for select using (status = 'active');
   end if;
@@ -11,7 +11,7 @@ end $$;
 -- Product variants: readable when parent product is active
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'public' and tablename = 'product_variants' and polname = 'variants_public_select'
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'product_variants' and policyname = 'variants_public_select'
   ) then
     create policy variants_public_select on public.product_variants for select
     using (
@@ -25,7 +25,7 @@ end $$;
 -- Product images: readable when parent product is active
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'public' and tablename = 'product_images' and polname = 'product_images_public_select'
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'product_images' and policyname = 'product_images_public_select'
   ) then
     create policy product_images_public_select on public.product_images for select
     using (
@@ -39,7 +39,7 @@ end $$;
 -- Orders: owner can select
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'public' and tablename = 'orders' and polname = 'orders_owner_select'
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'orders' and policyname = 'orders_owner_select'
   ) then
     create policy orders_owner_select on public.orders for select using (profile_id = auth.uid());
   end if;
@@ -48,7 +48,7 @@ end $$;
 -- Storage: public read access for specific buckets
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'storage' and tablename = 'objects' and polname = 'public read product_images'
+    select 1 from pg_policies where schemaname = 'storage' and tablename = 'objects' and policyname = 'public read product_images'
   ) then
     create policy "public read product_images" on storage.objects for select using (bucket_id = 'product_images');
   end if;
@@ -56,7 +56,7 @@ end $$;
 
 do $$ begin
   if not exists (
-    select 1 from pg_policies where schemaname = 'storage' and tablename = 'objects' and polname = 'public read content'
+    select 1 from pg_policies where schemaname = 'storage' and tablename = 'objects' and policyname = 'public read content'
   ) then
     create policy "public read content" on storage.objects for select using (bucket_id = 'content');
   end if;
