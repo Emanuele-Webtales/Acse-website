@@ -1,5 +1,6 @@
 -- Initial schema for Acsé ecommerce
 create extension if not exists pg_trgm;
+create extension if not exists pgcrypto;
 
 -- Profiles
 create table if not exists public.profiles (
