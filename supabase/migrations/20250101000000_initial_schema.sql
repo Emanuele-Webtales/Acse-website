@@ -177,9 +177,5 @@ alter table public.discounts enable row level security;
 alter table public.content_blocks enable row level security;
 alter table public.audit_logs enable row level security;
 
--- Example policies (tighten in follow-ups)
-create policy if not exists profiles_self on public.profiles for select using (id = auth.uid());
-create policy if not exists addresses_owner on public.addresses for all using (profile_id = auth.uid()) with check (profile_id = auth.uid());
-create policy if not exists products_public on public.products for select using (status = 'active');
-create policy if not exists orders_owner on public.orders for select using (profile_id = auth.uid());
+-- Policies are defined in later migrations to avoid dependency/version issues
 
